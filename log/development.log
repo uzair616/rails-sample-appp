@@ -1,0 +1,1552 @@
+  [1m[35m (202.1ms)[0m  [1m[35mCREATE DATABASE "rails_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (71.9ms)[0m  [1m[35mCREATE DATABASE "rails_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (22.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20221117151938)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117151938"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-11-17 15:20:14.978467"], ["updated_at", "2022-11-17 15:20:14.978467"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimoshail466@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "saimoshail466@gmail.com"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-17 15:43:19.017984"], ["updated_at", "2022-11-17 15:43:19.017984"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/users/login?email=saimsohail466@gmail.com&password=[FILTERED]" for ::1 at 2022-11-17 20:44:22 +0500
+  
+NoMethodError (undefined method `devise_for' for #<ActionDispatch::Routing::Mapper:0x00007f990109c670 @set=#<ActionDispatch::Routing::RouteSet:0x00007f98ffa42668>, @draw_paths=[#<Pathname:/Volumes/Main/devsloop/rails-app/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x00007f990109c620 @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @parent=#<ActionDispatch::Routing::Mapper::Scope:0x00007f9901077370 @hash=nil, @parent=nil, @scope_level=nil>, @scope_level=nil>, @concerns={}>):
+  
+config/routes.rb:3:in `block (2 levels) in <main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/users/login?email=saimsohail466@gmail.com&password=[FILTERED]" for ::1 at 2022-11-17 20:44:38 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"from_date"=>"Tue, 01 Nov 2022 11:42:41 +0000", "to_date"=>"Thu, 01 Dec 2022 11:43:14 +0000", "email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 18449ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 68104)
+
+
+Started POST "/api/users/login?user[email]=saimsohail466@gmail.com&userpassword=[FILTERED]" for ::1 at 2022-11-17 20:45:45 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com"}, "userpassword"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 6597ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2821)
+
+
+Started POST "/api/users/login?user[email]=saimsohail466@gmail.com&userpassword=[FILTERED]" for ::1 at 2022-11-17 20:49:20 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com"}, "userpassword"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ (byebug):1:in `create'
+Completed 422 Unprocessable Entity in 22292ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 194578)
+
+
+  [1m[36mUser Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "saimsohail466@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "email" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["email", "saimsohail466@gmail.com"], ["updated_at", "2022-11-17 15:50:06.466974"], ["id", 1]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/users/login" for ::1 at 2022-11-17 20:51:36 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 238ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 7503)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 20:51:47 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 231ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1251)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 20:59:49 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 14ms (Allocations: 2391)
+
+
+  
+NoMethodError (undefined method `authenticate_or_request_with_http_token' for #<SessionsController:0x00000000013830>):
+  
+app/controllers/application_controller.rb:12:in `authenticate_user'
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:00:06 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 243ms (Views: 0.4ms | ActiveRecord: 5.3ms | Allocations: 6960)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:00:12 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 228ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 750)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:00:17 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 227ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 860)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:01:33 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 2326)
+
+
+  
+NoMethodError (undefined method `authenticate_or_request_with_http_token' for #<SessionsController:0x0000000001a5e0>):
+  
+app/controllers/application_controller.rb:12:in `authenticate_user'
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:03:22 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 306)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:04:47 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 283)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:05:19 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 413)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:05:30 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 12032ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 47508)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:05:58 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 7115ms (ActiveRecord: 0.0ms | Allocations: 6330)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:06:22 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 247ms (Views: 0.3ms | ActiveRecord: 4.6ms | Allocations: 9551)
+
+
+Started POST "/api/users" for ::1 at 2022-11-17 21:09:28 +0500
+Processing by Devise::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370010@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370010@gift.edu.pk"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "181370010@gift.edu.pk"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-17 16:09:28.781009"], ["updated_at", "2022-11-17 16:09:28.781009"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 244ms (ActiveRecord: 9.7ms | Allocations: 8187)
+
+
+  
+ActionDispatch::Request::Session::DisabledSessionError (Your application has sessions disabled. To write to the session you must first configure a session store):
+  
+actionpack (7.0.4) lib/action_dispatch/request/session.rb:253:in `load_for_write!'
+actionpack (7.0.4) lib/action_dispatch/request/session.rb:151:in `[]='
+warden (1.2.9) lib/warden/session_serializer.rb:27:in `store'
+warden (1.2.9) lib/warden/proxy.rb:187:in `set_user'
+devise (4.8.1) lib/devise/controllers/sign_in_out.rb:53:in `sign_in'
+devise (4.8.1) app/controllers/devise/registrations_controller.rb:106:in `sign_up'
+devise (4.8.1) app/controllers/devise/registrations_controller.rb:24:in `create'
+actionpack (7.0.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.4) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/rendering.rb:53:in `process_action'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.4) lib/active_support/callbacks.rb:107:in `run_callbacks'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.4) lib/abstract_controller/base.rb:151:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (7.0.4) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/users" for ::1 at 2022-11-17 21:11:00 +0500
+Processing by Devise::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370010@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370010@gift.edu.pk"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 406 Not Acceptable in 237ms (ActiveRecord: 2.8ms | Allocations: 6054)
+
+
+  
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  
+responders (3.0.1) lib/action_controller/respond_with.rb:215:in `respond_with'
+devise (4.8.1) app/controllers/devise/registrations_controller.rb:34:in `create'
+actionpack (7.0.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (7.0.4) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/rendering.rb:53:in `process_action'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.4) lib/active_support/callbacks.rb:107:in `run_callbacks'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.4) lib/abstract_controller/base.rb:151:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/mapper.rb:18:in `block in <class:Constraints>'
+actionpack (7.0.4) lib/action_dispatch/routing/mapper.rb:48:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/users" for ::1 at 2022-11-17 21:11:54 +0500
+  
+TypeError (superclass mismatch for class SessionsController):
+  
+app/controllers/registrations_controller.rb:1:in `<main>'
+Started POST "/api/users" for ::1 at 2022-11-17 21:12:16 +0500
+  
+TypeError (superclass mismatch for class SessionsController):
+  
+app/controllers/registrations_controller.rb:1:in `<main>'
+Started POST "/api/users" for ::1 at 2022-11-17 21:13:09 +0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370010@gift.edu.pk", "password"=>"[FILTERED]"}}
+Completed 204 No Content in 5305ms (ActiveRecord: 0.0ms | Allocations: 2105)
+
+
+Started POST "/api/users" for ::1 at 2022-11-17 21:14:53 +0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370010@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370010@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:6:in `create'
+Completed 422 Unprocessable Entity in 11635ms (Views: 0.8ms | ActiveRecord: 4.8ms | Allocations: 719492)
+
+
+Started POST "/api/users" for ::1 at 2022-11-17 21:15:16 +0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370025@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370025@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:6:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "181370025@gift.edu.pk"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-17 16:15:19.820150"], ["updated_at", "2022-11-17 16:15:19.820150"]]
+  ↳ app/controllers/registrations_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/registrations_controller.rb:6:in `create'
+Completed 200 OK in 3601ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 4637)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:19:42 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 500 Internal Server Error in 240ms (ActiveRecord: 2.3ms | Allocations: 3863)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/concerns/respondable.rb:28:in `render_unprocessable_entity'
+app/controllers/sessions_controller.rb:8:in `create'
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:20:46 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 239ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 3950)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:21:44 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 236ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 4100)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 21:24:19 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 239ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 4097)
+
+
+Started POST "/api/users" for ::1 at 2022-11-17 22:46:57 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370025@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370025@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 281ms (Views: 0.3ms | ActiveRecord: 4.1ms | Allocations: 22345)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseInvitableColumnsInUsers (20221117175620)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.9ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_token" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_created_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_sent_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_accepted_at" timestamp(6)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_invitation_token" ON "users" ("invitation_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117175620"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/users/invitation" for ::1 at 2022-11-17 23:50:47 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by InvitationsController#create as JSON
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 352)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-17 23:51:36 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 244ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 12574)
+
+
+Started POST "/api/users/invitation" for ::1 at 2022-11-17 23:52:15 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"Authorization"=>"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczODk1MDk2fQ.kqP5uLSmQiH4-kg_jFofoZR8fTOo00ezabQ5m1ZLl60"}
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 235)
+
+
+Started POST "/api/users/invitation" for ::1 at 2022-11-17 23:52:49 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"Authorization"=>"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczODk1MDk2fQ.kqP5uLSmQiH4-kg_jFofoZR8fTOo00ezabQ5m1ZLl60"}
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 235)
+
+
+Started POST "/api/users/invitation" for ::1 at 2022-11-17 23:56:04 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"Authorization"=>"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczODk1MDk2fQ.kqP5uLSmQiH4-kg_jFofoZR8fTOo00ezabQ5m1ZLl60"}
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 235)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:11:08 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"Authorization"=>"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczODk1MDk2fQ.kqP5uLSmQiH4-kg_jFofoZR8fTOo00ezabQ5m1ZLl60", "email"=>"181370089@gift.edu.pk"}
+Completed 204 No Content in 15578ms (Allocations: 47255)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:12:03 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"Authorization"=>"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczODk1MDk2fQ.kqP5uLSmQiH4-kg_jFofoZR8fTOo00ezabQ5m1ZLl60", "email"=>"181370089@gift.edu.pk"}
+Completed 204 No Content in 14073ms (ActiveRecord: 10.8ms | Allocations: 8319)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:13:24 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"Authorization"=>"eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczODk1MDk2fQ.kqP5uLSmQiH4-kg_jFofoZR8fTOo00ezabQ5m1ZLl60", "email"=>"181370089@gift.edu.pk"}
+Completed 204 No Content in 11824ms (ActiveRecord: 0.0ms | Allocations: 4777)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:15:56 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 236)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:16:23 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+Completed 204 No Content in 10253ms (ActiveRecord: 0.0ms | Allocations: 2588)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:16:49 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+Completed 204 No Content in 12327ms (ActiveRecord: 4.1ms | Allocations: 8693)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:20:07 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 2.8ms | Allocations: 7970)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `invited_by_id`):
+  
+app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseInvitableColumnsInUsers (20221117175620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.6ms)[0m  [1m[35mDROP INDEX  "index_users_on_invitation_token"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_accepted_at"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_sent_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_created_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_token"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20221117175620"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseInvitableColumnsInUsers (20221117175620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_token" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_created_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_sent_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_accepted_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invited_by_id" integer[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_invitation_token" ON "users" ("invitation_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117175620"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 00:21:17 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 5.9ms | Allocations: 7506)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `invited_by_type`):
+  
+app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseInvitableColumnsInUsers (20221117175620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP INDEX  "index_users_on_invitation_token"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invited_by_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_accepted_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_sent_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_created_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_token"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20221117175620"]]
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20221117151938)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP INDEX  "index_users_on_reset_password_token"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP INDEX  "index_users_on_email"[0m
+  [1m[35m (2.6ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20221117151938"]]
+  [1m[36mTRANSACTION (13.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20221117151938)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117151938"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseInvitableColumnsInUsers (20221117175620)
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_token" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_created_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_sent_at" timestamp(6)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_accepted_at" timestamp(6)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_invitation_token" ON "users" ("invitation_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117175620"]]
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/api/users" for ::1 at 2022-11-18 00:23:54 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 283)
+
+
+Started POST "/api/users" for ::1 at 2022-11-18 00:25:43 +0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 265)
+
+
+Started POST "/api/users" for ::1 at 2022-11-18 00:25:56 +0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 77)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 01:48:45 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 11.4ms | Allocations: 8070)
+
+
+  
+ActiveModel::MissingAttributeError (can't write unknown attribute `invited_by_id`):
+  
+app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseInvitableColumnsInUsers (20221117175620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP INDEX  "index_users_on_invitation_token"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_accepted_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_sent_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_created_at"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "invitation_token"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20221117175620"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseInvitableColumnsInUsers (20221117175620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_token" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_created_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_sent_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invitation_accepted_at" timestamp(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invited_by_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "invited_by_type" character varying[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_invitation_token" ON "users" ("invitation_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221117175620"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6302314972764189855)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 01:49:28 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "invitation_token", "invitation_created_at", "invitation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "181370089@gift.edu.pk"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-17 20:49:28.708598"], ["updated_at", "2022-11-17 20:49:28.708598"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-17 20:49:28.708006"], ["invitation_sent_at", "2022-11-17 20:49:28.708006"]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 18.3ms | Allocations: 4753)
+Devise::Mailer#invitation_instructions: processed outbound mail in 42.3ms
+Completed 500 Internal Server Error in 386ms (ActiveRecord: 16.5ms | Allocations: 20454)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root_url' for #<ActionView::Base:0x00000000046820>):
+    1: <p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+    2: 
+    3: <p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+    4: 
+    5: <p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, invitation_token: @token) %></p>
+    6: 
+  
+app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 01:51:46 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "invitation_token" = $2, "invitation_created_at" = $3, "invitation_sent_at" = $4 WHERE "users"."id" = $5[0m  [["updated_at", "2022-11-17 20:51:46.490490"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-17 20:51:46.490196"], ["invitation_sent_at", "2022-11-17 20:51:46.490196"], ["id", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 7.9ms | Allocations: 3085)
+Devise::Mailer#invitation_instructions: processed outbound mail in 9.0ms
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.8ms | Allocations: 7474)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root_url' for #<ActionView::Base:0x000000000469d8>):
+    1: <p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+    2: 
+    3: <p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+    4: 
+    5: <p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, invitation_token: @token) %></p>
+    6: 
+  
+app/controllers/invitations_controller.rb:3:in `create'
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 01:52:07 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "invitation_token" = $2, "invitation_created_at" = $3, "invitation_sent_at" = $4 WHERE "users"."id" = $5[0m  [["updated_at", "2022-11-17 20:52:07.667011"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-17 20:52:07.666442"], ["invitation_sent_at", "2022-11-17 20:52:07.666442"], ["id", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 6.4ms | Allocations: 4179)
+Devise::Mailer#invitation_instructions: processed outbound mail in 26.3ms
+Completed 500 Internal Server Error in 155ms (ActiveRecord: 7.6ms | Allocations: 29036)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root_url' for #<ActionView::Base:0x0000000000b018>):
+    1: <p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+    2: 
+    3: <p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+    4: 
+    5: <p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, invitation_token: @token) %></p>
+    6: 
+  
+app/controllers/invitations_controller.rb:3:in `create'
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 01:53:03 +0500
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 01:54:16 +0500
+  
+NoMethodError (undefined method `root_to' for #<ActionDispatch::Routing::Mapper:0x00007fba6f400890 @set=#<ActionDispatch::Routing::RouteSet:0x00007fba71b00710>, @draw_paths=[#<Pathname:/Volumes/Main/devsloop/rails-app/config/routes>], @scope=#<ActionDispatch::Routing::Mapper::Scope:0x00007fba6f400840 @hash={:path_names=>{:new=>"new", :edit=>"edit"}}, @parent=#<ActionDispatch::Routing::Mapper::Scope:0x00007fba71bd2328 @hash=nil, @parent=nil, @scope_level=nil>, @scope_level=nil>, @concerns={}>
+Did you mean?  root):
+  
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 01:54:35 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370089@gift.edu.pk"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "invitation_token" = $2, "invitation_created_at" = $3, "invitation_sent_at" = $4 WHERE "users"."id" = $5[0m  [["updated_at", "2022-11-17 20:54:35.752799"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-17 20:54:35.752513"], ["invitation_sent_at", "2022-11-17 20:54:35.752513"], ["id", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 3.0ms | Allocations: 957)
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb (Duration: 1.0ms | Allocations: 402)
+Devise::Mailer#invitation_instructions: processed outbound mail in 8.7ms
+Delivered mail 63769f8bbbfca_52725a7852997@Devsloops-MacBook-Pro.local.mail (10.4ms)
+Date: Fri, 18 Nov 2022 01:54:35 +0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: 181370089@gift.edu.pk
+Message-ID: <63769f8bbbfca_52725a7852997@Devsloops-MacBook-Pro.local.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_63769f8bbaf64_52725a78528c1";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+validate: 
+
+
+----==_mimepart_63769f8bbaf64_52725a78528c1
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello 181370089@gift.edu.pk
+
+Someone has invited you to http://localhost:3000/, you can accept it through the link below.
+
+http://localhost:3000/api/users/invitation/accept?invitation_token=Wf6-mhnFbTQ4QazxQmTX
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_63769f8bbaf64_52725a78528c1
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello 181370089@gift.edu.pk</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/api/users/invitation/accept?invitation_token=Wf6-mhnFbTQ4QazxQmTX">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_63769f8bbaf64_52725a78528c1--
+
+Completed 200 OK in 37ms (Views: 0.3ms | ActiveRecord: 5.4ms | Allocations: 16496)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 01:58:41 +0500
+  
+ActionController::RoutingError (uninitialized constant DeviseSessionsController
+Did you mean?  DeviseController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 01:59:20 +0500
+  
+ActionController::RoutingError (uninitialized constant DeviseSessionsController
+Did you mean?  DeviseController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 01:59:32 +0500
+  
+ActionController::RoutingError (uninitialized constant DeviseSessionsController
+Did you mean?  DeviseController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:00:30 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:02:56 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:03:17 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:03:49 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:05:02 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:05:13 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:06:00 +0500
+  
+Zeitwerk::NameError (expected file /Volumes/Main/devsloop/rails-app/app/controllers/sessions_controller.rb to define constant SessionsController, but didn't):
+  
+app/controllers/devise/sessions_controller.rb:2:in `<module:Devise>'
+app/controllers/devise/sessions_controller.rb:1:in `<main>'
+Started POST "/api/users/login" for ::1 at 2022-11-18 02:06:34 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:40:53 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:41:13 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::SessionsController):
+  
+Started POST "/api/users" for ::1 at 2022-11-18 10:41:44 +0500
+  
+ActionController::RoutingError (uninitialized constant Devise::RegistrationsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:43:11 +0500
+  
+Zeitwerk::NameError (expected file /Volumes/Main/devsloop/rails-app/app/controllers/sessions_controller.rb to define constant SessionsController, but didn't):
+  
+zeitwerk (2.6.6) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.6.6) lib/zeitwerk/kernel.rb:31:in `require'
+activesupport (7.0.4) lib/active_support/inflector/methods.rb:280:in `const_get'
+activesupport (7.0.4) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (7.0.4) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (7.0.4) lib/action_dispatch/http/request.rb:90:in `controller_class_for'
+actionpack (7.0.4) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (7.0.4) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (7.0.4) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (7.0.4) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:43:49 +0500
+  
+ActionController::RoutingError (uninitialized constant SessionsController):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:44:25 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+Filter chain halted as :authenticate_user rendered or redirected
+Completed 401 Unauthorized in 5ms (Allocations: 2333)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:45:11 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (12.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 83ms (Views: 0.3ms | ActiveRecord: 31.5ms | Allocations: 6282)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:45:47 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370089@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 23ms (Views: 0.2ms | ActiveRecord: 5.6ms | Allocations: 9077)
+
+
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (19.8ms)[0m  [1m[33mUPDATE "users" SET "encrypted_password" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["encrypted_password", "[FILTERED]"], ["updated_at", "2022-11-18 05:46:14.893896"], ["id", 1]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:46:18 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370089@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 871)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:47:04 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370089@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 40982ms (Views: 0.5ms | ActiveRecord: 2.5ms | Allocations: 54033)
+
+
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/api/users/login" for ::1 at 2022-11-18 10:48:05 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"181370089@gift.edu.pk", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "181370089@gift.edu.pk"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 4890ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 3529)
+
+
+Started POST "/api/users" for ::1 at 2022-11-18 10:48:32 +0500
+  
+Zeitwerk::NameError (expected file /Volumes/Main/devsloop/rails-app/app/controllers/registrations_controller.rb to define constant RegistrationsController, but didn't):
+  
+zeitwerk (2.6.6) lib/zeitwerk/loader/callbacks.rb:25:in `on_file_autoloaded'
+zeitwerk (2.6.6) lib/zeitwerk/kernel.rb:31:in `require'
+activesupport (7.0.4) lib/active_support/inflector/methods.rb:280:in `const_get'
+activesupport (7.0.4) lib/active_support/inflector/methods.rb:280:in `constantize'
+activesupport (7.0.4) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (7.0.4) lib/action_dispatch/http/request.rb:90:in `controller_class_for'
+actionpack (7.0.4) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (7.0.4) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (7.0.4) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (7.0.4) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/api/users" for ::1 at 2022-11-18 10:48:42 +0500
+Processing by RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:5:in `create'
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "saimsohail466@gmail.com"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-18 05:48:42.822465"], ["updated_at", "2022-11-18 05:48:42.822465"]]
+  ↳ app/controllers/registrations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/registrations_controller.rb:5:in `create'
+Completed 200 OK in 244ms (Views: 0.3ms | ActiveRecord: 5.8ms | Allocations: 9496)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 10:49:10 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"zagham@gmail.com"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "zagham@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "invitation_token", "invitation_created_at", "invitation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "zagham@gmail.com"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-18 05:49:10.709120"], ["updated_at", "2022-11-18 05:49:10.709120"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-18 05:49:10.708811"], ["invitation_sent_at", "2022-11-18 05:49:10.708811"]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 2.6ms | Allocations: 1295)
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb (Duration: 0.9ms | Allocations: 400)
+Devise::Mailer#invitation_instructions: processed outbound mail in 14.8ms
+Delivered mail 63771cd6b25f7_54562e2c195f9@Devsloops-MacBook-Pro.local.mail (6.6ms)
+Date: Fri, 18 Nov 2022 10:49:10 +0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: zagham@gmail.com
+Message-ID: <63771cd6b25f7_54562e2c195f9@Devsloops-MacBook-Pro.local.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_63771cd6b1b80_54562e2c19493";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+validate: 
+
+
+----==_mimepart_63771cd6b1b80_54562e2c19493
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello zagham@gmail.com
+
+Someone has invited you to http://localhost:3000/, you can accept it through the link below.
+
+http://localhost:3000/api/users/invitation/accept?invitation_token=qJ7ds9GjCFb_e1sAUSNQ
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_63771cd6b1b80_54562e2c19493
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello zagham@gmail.com</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/api/users/invitation/accept?invitation_token=qJ7ds9GjCFb_e1sAUSNQ">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_63771cd6b1b80_54562e2c19493--
+
+Completed 200 OK in 361ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 21107)
+
+
+Started OPTIONS "/api/users/login" for ::1 at 2022-11-18 11:40:58 +0500
+  
+ActionController::RoutingError (No route matches [OPTIONS] "/api/users/login"):
+  
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:42:26 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (19.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 245ms (Views: 0.3ms | ActiveRecord: 4.0ms | Allocations: 13685)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:46:23 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"asjsaJ", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"asjsaJ", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asjsaJ"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 824)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:46:42 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 212ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 910)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:46:44 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 220ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 908)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:47:42 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 223ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 909)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:47:57 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 222ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 892)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:48:48 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 212ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 891)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:49:16 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 221ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 892)
+
+
+Started POST "/api/users/login" for ::1 at 2022-11-18 11:50:38 +0500
+Processing by SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"saimsohail466@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "saimsohail466@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+Completed 200 OK in 224ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 892)
+
+
+Started GET "/" for ::1 at 2022-11-18 12:29:39 +0500
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for ApplicationController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/favicon.ico" for ::1 at 2022-11-18 12:29:39 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 13:09:12 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"zagham@gmail.com"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "zagham@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "invitation_token" = $2, "invitation_created_at" = $3, "invitation_sent_at" = $4 WHERE "users"."id" = $5[0m  [["updated_at", "2022-11-18 08:09:12.611896"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-18 08:09:12.611299"], ["invitation_sent_at", "2022-11-18 08:09:12.611299"], ["id", 3]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 3.4ms | Allocations: 1086)
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb (Duration: 0.8ms | Allocations: 400)
+Devise::Mailer#invitation_instructions: processed outbound mail in 34.7ms
+Delivered mail 63773da8a0a29_6b4e5898-322@Devsloops-MacBook-Pro.local.mail (11.2ms)
+Date: Fri, 18 Nov 2022 13:09:12 +0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: zagham@gmail.com
+Message-ID: <63773da8a0a29_6b4e5898-322@Devsloops-MacBook-Pro.local.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_63773da89f577_6b4e5898-4ec";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+validate: 
+
+
+----==_mimepart_63773da89f577_6b4e5898-4ec
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello zagham@gmail.com
+
+Someone has invited you to http://localhost:3000/, you can accept it through the link below.
+
+http://localhost:3000/api/users/invitation/accept?invitation_token=YBp3DnZ8W_tcJv1m_tXB
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_63773da89f577_6b4e5898-4ec
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello zagham@gmail.com</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/api/users/invitation/accept?invitation_token=YBp3DnZ8W_tcJv1m_tXB">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_63773da89f577_6b4e5898-4ec--
+
+Completed 200 OK in 183ms (Views: 0.2ms | ActiveRecord: 25.7ms | Allocations: 22256)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 13:13:55 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370090@gmail.com", "invitation"=>{"email"=>"181370090@gmail.com"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370090@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "invitation_token", "invitation_created_at", "invitation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "181370090@gmail.com"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-18 08:13:55.363303"], ["updated_at", "2022-11-18 08:13:55.363303"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-18 08:13:55.363046"], ["invitation_sent_at", "2022-11-18 08:13:55.363046"]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 0.5ms | Allocations: 266)
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb (Duration: 0.4ms | Allocations: 171)
+Devise::Mailer#invitation_instructions: processed outbound mail in 4.9ms
+Delivered mail 63773ec35b7fe_6b4e58d4-1ef@Devsloops-MacBook-Pro.local.mail (3.2ms)
+Date: Fri, 18 Nov 2022 13:13:55 +0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: 181370090@gmail.com
+Message-ID: <63773ec35b7fe_6b4e58d4-1ef@Devsloops-MacBook-Pro.local.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_63773ec35aa2c_6b4e58d4-2f9";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+validate: 
+
+
+----==_mimepart_63773ec35aa2c_6b4e58d4-2f9
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello 181370090@gmail.com
+
+Someone has invited you to http://localhost:3000/, you can accept it through the link below.
+
+http://localhost:3000/api/users/invitation/accept?invitation_token=5tVyPFQUZyHc-xzj15Ex
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_63773ec35aa2c_6b4e58d4-2f9
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello 181370090@gmail.com</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/api/users/invitation/accept?invitation_token=5tVyPFQUZyHc-xzj15Ex">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_63773ec35aa2c_6b4e58d4-2f9--
+
+Completed 200 OK in 242ms (Views: 0.1ms | ActiveRecord: 3.2ms | Allocations: 9001)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 13:14:26 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"181370090@gmail.com", "invitation"=>{"email"=>"181370090@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "181370090@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "invitation_token" = $2, "invitation_created_at" = $3, "invitation_sent_at" = $4 WHERE "users"."id" = $5[0m  [["updated_at", "2022-11-18 08:14:26.418429"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-18 08:14:26.418199"], ["invitation_sent_at", "2022-11-18 08:14:26.418199"], ["id", 4]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 0.5ms | Allocations: 216)
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb (Duration: 0.3ms | Allocations: 171)
+Devise::Mailer#invitation_instructions: processed outbound mail in 3.3ms
+Delivered mail 63773ee2685ad_6b4e2e4011@Devsloops-MacBook-Pro.local.mail (2.6ms)
+Date: Fri, 18 Nov 2022 13:14:26 +0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: 181370090@gmail.com
+Message-ID: <63773ee2685ad_6b4e2e4011@Devsloops-MacBook-Pro.local.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_63773ee267d4a_6b4e2e400cb";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+validate: 
+
+
+----==_mimepart_63773ee267d4a_6b4e2e400cb
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello 181370090@gmail.com
+
+Someone has invited you to http://localhost:3000/, you can accept it through the link below.
+
+http://localhost:3000/api/users/invitation/accept?invitation_token=YYTmXTopN9sN1kvQPSen
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_63773ee267d4a_6b4e2e400cb
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello 181370090@gmail.com</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/api/users/invitation/accept?invitation_token=YYTmXTopN9sN1kvQPSen">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_63773ee267d4a_6b4e2e400cb--
+
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 2.8ms | Allocations: 7696)
+
+
+Started POST "/api/send_invitation" for ::1 at 2022-11-18 13:14:46 +0500
+Processing by InvitationsController#create as JSON
+  Parameters: {"email"=>"asim@gamil.com", "invitation"=>{"email"=>"asim@gamil.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "asim@gamil.com"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."invitation_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["invitation_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "invitation_token", "invitation_created_at", "invitation_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "asim@gamil.com"], ["encrypted_password", "[FILTERED]"], ["created_at", "2022-11-18 08:14:46.777653"], ["updated_at", "2022-11-18 08:14:46.777653"], ["invitation_token", "[FILTERED]"], ["invitation_created_at", "2022-11-18 08:14:46.777362"], ["invitation_sent_at", "2022-11-18 08:14:46.777362"]]
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/invitations_controller.rb:3:in `create'
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.html.erb (Duration: 0.6ms | Allocations: 217)
+  Rendering /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb
+  Rendered /Users/devsloop/.rbenv/versions/3.0.1/lib/ruby/gems/3.0.0/gems/devise_invitable-2.0.6/app/views/devise/mailer/invitation_instructions.text.erb (Duration: 1.2ms | Allocations: 171)
+Devise::Mailer#invitation_instructions: processed outbound mail in 4.1ms
+Delivered mail 63773ef6c090d_6b4e580c347@Devsloops-MacBook-Pro.local.mail (2.9ms)
+Date: Fri, 18 Nov 2022 13:14:46 +0500
+From: please-change-me-at-config-initializers-devise@example.com
+Reply-To: please-change-me-at-config-initializers-devise@example.com
+To: asim@gamil.com
+Message-ID: <63773ef6c090d_6b4e580c347@Devsloops-MacBook-Pro.local.mail>
+Subject: Invitation instructions
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_63773ef6c0320_6b4e580c257";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+validate: 
+
+
+----==_mimepart_63773ef6c0320_6b4e580c257
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello asim@gamil.com
+
+Someone has invited you to http://localhost:3000/, you can accept it through the link below.
+
+http://localhost:3000/api/users/invitation/accept?invitation_token=CuzaysHwF6eRe8WkEuz5
+
+
+If you don't want to accept the invitation, please ignore this email. Your account won't be created until you access the link above and set your password.
+
+----==_mimepart_63773ef6c0320_6b4e580c257
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Hello asim@gamil.com</p>
+
+<p>Someone has invited you to http://localhost:3000/, you can accept it through the link below.</p>
+
+<p><a href="http://localhost:3000/api/users/invitation/accept?invitation_token=CuzaysHwF6eRe8WkEuz5">Accept invitation</a></p>
+
+
+<p>If you don&#39;t want to accept the invitation, please ignore this email. Your account won&#39;t be created until you access the link above and set your password.</p>
+
+----==_mimepart_63773ef6c0320_6b4e580c257--
+
+Completed 200 OK in 237ms (Views: 0.1ms | ActiveRecord: 3.2ms | Allocations: 8062)
+
+
